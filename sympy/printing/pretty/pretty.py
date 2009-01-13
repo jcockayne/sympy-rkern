@@ -10,12 +10,17 @@ pprint_use_unicode = pretty_use_unicode
 pprint_try_use_unicode = pretty_try_use_unicode
 
 
+def emptyPrinter(x):
+    """ Default empty printer.
+    """
+    return prettyForm(xstr(x))
+
 class PrettyPrinter(Printer):
     """Printer, which converts an expression into 2D ascii-art figure."""
 
     def __init__(self, use_unicode=None):
         Printer.__init__(self)
-        self.emptyPrinter = lambda x : prettyForm(xstr(x))
+        self.emptyPrinter = emptyPrinter
 
     def doprint(self, expr):
         return self._print(expr).terminal_string()
